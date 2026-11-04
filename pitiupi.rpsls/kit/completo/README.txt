@@ -3,7 +3,7 @@ Author: Paulo Felipe
 (Versão em português: LEIA-ME.txt)
 
 PLAN B kit: a prebuilt Pitiupi with the plugin already installed, for
-someone who cannot build the professor's Pitiupi. The normal way is to
+someone who cannot build Pitiupi. The normal way is to
 put pitiupi.rpsls.jar into the plugins folder of your own Pitiupi
 (see HOW-TO-INSTALL.txt in the plugin kit).
 

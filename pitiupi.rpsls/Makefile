@@ -69,7 +69,7 @@ test: $(CORE_JAR) $(SOURCES) $(TESTS)
 KIT_DIR   = dist/rpsls-plugin
 FULL_DIR  = dist/pitiupi-com-rpsls
 
-# Main kit: just the plugin, to drop into the professor's Pitiupi.
+# Main kit: just the plugin, to drop into an existing Pitiupi.
 kit: $(DIST)
 	rm -rf "$(KIT_DIR)" && mkdir -p "$(KIT_DIR)"
 	cp "$(DIST)" kit/HOW-TO-INSTALL.txt kit/COMO-INSTALAR.txt "$(KIT_DIR)/"

@@ -2,8 +2,7 @@
 
 🇧🇷 *Versão em português: [README.pt-BR.md](README.pt-BR.md)*
 
-A **1‑vs‑1 local‑network game** for [Pitiupi](https://git.alice.ufsj.edu.br/fls/pitiupi), the P2P networking tool by Prof. Flávio (UFSJ).
-Computer Networks course assignment (Master's) — **Paulo Felipe**.
+A **1‑vs‑1 local‑network game** plugin for [Pitiupi](https://git.alice.ufsj.edu.br/fls/pitiupi), the P2P networking platform developed by Prof. Flávio (UFSJ). Author: **Paulo Felipe**.
 
 - Custom application protocol **RPSLS/1.0** over Pitiupi's **private TCP connection (unicast)**: invitation, a fair round with **commit‑reveal (SHA‑256)**, rematch and timeouts. Details in [PROTOCOL.md](PROTOCOL.md) (🇧🇷 [PROTOCOLO.md](PROTOCOLO.md)).
 - Invitation screen, animated 3‑2‑1 countdown, time bar, 3D icons for the 5 moves, side‑by‑side result with the rule that applied, score, Yep/Nope rematch and a rules screen.
@@ -20,7 +19,7 @@ ant jar       # or: make   (builds the core and the plugin -> dist/pitiupi.rpsls
 make test     # tests: rules, commit-reveal and simulated matches
 ```
 
-## Install into the professor's Pitiupi
+## Install into Pitiupi
 
 The plugin follows the same layout as the other plugins in the repository (`pitiupi.chat`, `pitiupi.mpChat`): a NetBeans/ant project at the repository root that produces a `.jar`, which goes into **`pitiupi/plugins/`**.
 
@@ -45,7 +44,7 @@ cd ../pitiupi && java -jar dist/pitiupi.jar    # 4. run FROM pitiupi/ (or NetBea
 
 Pitiupi looks for `plugins/` **relative to the folder it is started from**. NetBeans already runs from `pitiupi/`; in a terminal, run it from inside `pitiupi/` (double‑clicking `dist/pitiupi.jar` will not find the plugin). The console confirms it: `Discovered plugin package: pitiupi.rpsls.jar`.
 
-For classmates who only want to play: `make kit` creates `dist/rpsls-plugin.zip` with `pitiupi.rpsls.jar`, `HOW-TO-INSTALL.txt` and `COMO-INSTALAR.txt`.
+To hand the plugin to other players: `make kit` creates `dist/rpsls-plugin.zip` with `pitiupi.rpsls.jar`, `HOW-TO-INSTALL.txt` and `COMO-INSTALAR.txt`.
 
 **Works with both Pitiupi plugin APIs.** The same `pitiupi.rpsls.jar` runs on all of them, and the project builds with `ant jar` on any of them:
 
@@ -62,7 +61,7 @@ Plan B, for someone who cannot build Pitiupi: `make kit-full` creates `dist/piti
 
 ## Playing on the same Wi‑Fi (different notebooks)
 
-This is how the plugin is evaluated: each person on their own notebook, everyone on the same network, each with `pitiupi.rpsls.jar` in their own `pitiupi/plugins/`.
+The intended setup: each player on their own computer, everyone on the same network, each with `pitiupi.rpsls.jar` in their own `pitiupi/plugins/`.
 
 1. Everyone on the same Wi‑Fi, logging in with the **same port (8000)**.
 2. Firewall: on Windows, the first time, allow Java on **private and public networks** (campus Wi‑Fi is usually "public"). On Linux with `ufw`: `sudo ufw allow 8000`.
@@ -96,7 +95,7 @@ make up       # starts "alice" (172.28.0.11) and "bob" (172.28.0.12) on the same
 The log (`make logs`) shows every protocol message sent (`->`) and received (`<-`).
 After changing the code: `make && make up` (the .jar files are mounted as volumes). Stop: `make down`.
 
-Capture the traffic (for the report):
+Capture the traffic for analysis (e.g. in Wireshark):
 ```sh
 docker compose -f docker/compose.yml exec alice tcpdump -i eth0 -w /tmp/rpsls.pcap tcp port 8000
 ```

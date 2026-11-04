@@ -3,8 +3,8 @@ Plugin para o Pitiupi (Prof. Flávio)  ·  Autor: Paulo Felipe
 (English version: HOW-TO-INSTALL.txt)
 =====================================================================
 
-O jogo é o arquivo  pitiupi.rpsls.jar . Ele roda dentro do Pitiupi do
-professor: cada jogador coloca o .jar na pasta de plugins do SEU Pitiupi.
+O jogo é o arquivo  pitiupi.rpsls.jar . Ele roda dentro do Pitiupi:
+cada jogador coloca o .jar na pasta de plugins do SEU Pitiupi.
 Funciona com qualquer branch do repositório (main, update/mpChat...).
 Precisa de Java 17 ou mais novo.
 
@@ -62,8 +62,8 @@ e. No console deve aparecer:
 a. No login, TODOS usam a mesma porta: 8000.
 b. Windows: se perguntar sobre o firewall, marque "Redes privadas" E
    "Redes públicas" e clique em Permitir (Wi‑Fi de faculdade é "pública").
-c. Em alguns segundos os colegas aparecem na lista "Online" (à direita).
-d. Clique no nome do colega -> Jogos -> Desafiar para RPSLS.
+c. Em alguns segundos os outros jogadores aparecem na lista "Online" (à direita).
+d. Clique no nome do outro jogador -> Jogos -> Desafiar para RPSLS.
 e. Ele recebe "E aí, bora jogar...?" -> Bora!
 f. Contagem 3, 2, 1, Vai! -> cada um clica na sua jogada (10 s).
 g. Aparece o que cada um jogou, a regra ("Spock vaporiza Pedra") e quem venceu.
@@ -86,7 +86,7 @@ h. "Jogar de novo?" -> se os dois clicarem Yep, nova rodada. Nope encerra.
     -> desliguem VPN; fechem Docker/máquinas virtuais.
 
 * "Convite expirou ... Ele tem o plugin RPSLS instalado?":
-    o colega não colocou o .jar na pasta plugins certa (ou não reiniciou).
+    o outro jogador não colocou o .jar na pasta plugins certa (ou não reiniciou).
 
 
 4) COMPILAR O PLUGIN PELO CÓDIGO (opcional, igual aos outros plugins)
@@ -97,6 +97,6 @@ pitiupi.chat/) e:
      ant jar                       -> dist/pitiupi.rpsls.jar
      mkdir -p ../pitiupi/plugins
      cp dist/pitiupi.rpsls.jar ../pitiupi/plugins/
-Ou, como no README do professor, um link para não precisar copiar de novo:
+Ou, como no README do Pitiupi, um link para não precisar copiar de novo:
      cd <repositório>/pitiupi/plugins
      ln -s ../../pitiupi.rpsls/dist/pitiupi.rpsls.jar .

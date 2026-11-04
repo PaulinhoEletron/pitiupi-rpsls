@@ -3,8 +3,8 @@ Plugin for Pitiupi (Prof. Flávio, UFSJ)  ·  Author: Paulo Felipe
 (Versão em português: COMO-INSTALAR.txt)
 =====================================================================
 
-The game is the file  pitiupi.rpsls.jar . It runs inside the professor's
-Pitiupi: each player puts the .jar in the plugins folder of THEIR Pitiupi.
+The game is the file  pitiupi.rpsls.jar . It runs inside Pitiupi:
+each player puts the .jar in the plugins folder of THEIR Pitiupi.
 Works with any branch of the repository (main, update/mpChat...).
 Requires Java 17 or newer.
 

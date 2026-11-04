@@ -1,0 +1,27 @@
+RPSLS - Pedra, Papel, Tesoura, Lagarto, Spock (plugin do Pitiupi)
+Autor: Paulo Felipe
+(English version: README.txt)
+
+Como jogar
+----------
+1. Precisa do Java 17 ou mais novo (teste no terminal: java -version).
+2. Abra:  Windows -> jogar.bat     Linux/macOS -> jogar.sh
+3. No login: escolha um nome e use a porta 8000 (TODOS precisam usar a mesma porta).
+4. Se o Windows perguntar sobre o firewall, marque "Redes privadas" E "Redes públicas"
+   e clique em Permitir. (Wi‑Fi de faculdade normalmente é "rede pública".)
+5. Em alguns segundos o colega aparece na lista "Online" (à direita).
+6. Clique no nome dele -> Jogos -> Desafiar para RPSLS.
+7. Ele clica "Bora!", contagem 3-2-1-Vai!, cada um escolhe, aparece quem venceu.
+   "Jogar de novo?" -> se os dois disserem Yep, nova rodada.
+
+Se o colega NÃO aparecer na lista Online
+---------------------------------------
+A Wi‑Fi pode estar bloqueando multicast (a descoberta automática). Tente pelo IP:
+  - Um de vocês: menu Jogos -> RPSLS -> Meus endereços IP  (anote o IP, ex.: 192.168.0.23)
+  - O outro:     menu Jogos -> RPSLS -> Desafiar por IP... (digite esse IP)
+
+Se nem pelo IP funcionar
+------------------------
+A Wi‑Fi provavelmente isola os aparelhos (comum em redes de faculdade).
+Solução: liguem o hotspot de um celular e conectem os dois notebooks nele.
+Também ajuda: desligar VPN e fechar o Docker/máquinas virtuais.

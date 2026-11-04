@@ -1,0 +1,32 @@
+# Two players on the same virtual "LAN" (Docker bridge network).
+# Open in the browser:
+#   Alice -> http://localhost:6080/vnc.html
+#   Bob   -> http://localhost:6081/vnc.html
+x-player: &player
+  build: .
+  volumes:
+    - ../../pitiupi/dist/pitiupi.jar:/jars/pitiupi.jar:ro
+    - ../dist/pitiupi.rpsls.jar:/jars/pitiupi.rpsls.jar:ro
+  cap_add: [NET_ADMIN, NET_RAW]   # allows tcpdump inside the container
+
+services:
+  alice:
+    <<: *player
+    hostname: alice
+    ports: ["6080:6080"]
+    networks:
+      lan: { ipv4_address: 172.28.0.11 }
+
+  bob:
+    <<: *player
+    hostname: bob
+    ports: ["6081:6080"]
+    networks:
+      lan: { ipv4_address: 172.28.0.12 }
+
+networks:
+  lan:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24

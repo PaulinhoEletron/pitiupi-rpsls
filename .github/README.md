@@ -14,9 +14,9 @@ A peer‑to‑peer, 1‑vs‑1 game plugin for **[Pitiupi](https://github.com/Ga
 - **Native host integration.** The game runs as a tab in Pitiupi's main window. Challenges start from the user list through peer actions, and the plugin uses the host's asynchronous private TCP connections.
 - **Concurrency‑safe design.** The protocol logic is UI‑independent and thread‑safe (network, Swing and timer threads), and the UI only consumes events.
 - **Resilient on real networks.** Players can challenge each other by IP when the Wi‑Fi blocks multicast discovery, and connection failures produce clear diagnostics.
-- **Tested.** 20 automated tests cover all 25 move combinations through a simulated link, cheating detection, rematches and timeouts. End‑to‑end matches were run between Docker containers on a virtual LAN.
+- **Tested.** 20 automated tests cover all 25 move combinations through a simulated link, cheating detection, rematches and timeouts. End‑to‑end matches were played between two Pitiupi instances on a LAN.
 
-**Stack:** Java 17+, Swing / Java2D, TCP sockets (through Pitiupi), `java.security` (SHA‑256, `SecureRandom`), Ant / NetBeans, Docker.
+**Stack:** Java 17+, Swing / Java2D, TCP sockets (through Pitiupi), `java.security` (SHA‑256, `SecureRandom`), Ant / NetBeans.
 
 ## Documentation
 
@@ -38,13 +38,12 @@ plugins/rpsls/
 │   ├── gui/       the game tab (Swing), icons
 │   └── plugin/    plugin entry point (Pitiupi integration)
 ├── test/          automated tests
-├── docker/        two‑player test environment
 └── kit/           end‑user install guides
 ```
 
 ## Try it locally
 
-Requires Git, JDK 17+ and `make` (Docker too for the two‑player demo). Linux, macOS or WSL:
+Requires Git, JDK 17+ and `make`. Linux, macOS or WSL:
 
 ```sh
 git clone https://github.com/GabrielFSSantos/pitiupi.git          # Pitiupi
@@ -53,10 +52,9 @@ cp -r pitiupi-rpsls/plugins/rpsls pitiupi/plugins/
 cd pitiupi/plugins/rpsls
 
 make run    # builds Pitiupi + the plugin and opens Pitiupi with the game installed
-make up     # or: two players (alice, bob) in Docker containers on a virtual LAN
 ```
 
-With `make up`, open Alice at http://localhost:6080/vnc.html and Bob at http://localhost:6081/vnc.html, log in to both on port 5000, then in Bob click **alice** in **Usuários nesta rede** → **Pedra, Papel, Tesoura, Lagarto, Spock** → **Desafiar para…**. `make logs` shows the protocol messages; `make down` stops everything.
+To play, a second player installs the plugin in their own Pitiupi on the same network (see below).
 
 ## Install and run
 
@@ -116,7 +114,7 @@ Plugin de jogo **1 contra 1, ponto a ponto**, para o **[Pitiupi](https://github.
 
 Documentação em português: [README.pt-BR.md](../plugins/rpsls/README.pt-BR.md) e [PROTOCOLO.md](../plugins/rpsls/PROTOCOLO.md).
 
-**Testar localmente** (Git, JDK 17+ e `make`; Docker para a demo com dois jogadores):
+**Testar localmente** (Git, JDK 17+ e `make`):
 
 ```sh
 git clone https://github.com/GabrielFSSantos/pitiupi.git
@@ -124,7 +122,6 @@ git clone https://github.com/PaulinhoEletron/pitiupi-rpsls.git
 cp -r pitiupi-rpsls/plugins/rpsls pitiupi/plugins/
 cd pitiupi/plugins/rpsls
 make run    # abre o Pitiupi com o jogo instalado
-make up     # ou: dois jogadores em containers -> http://localhost:6080/vnc.html e :6081
 ```
 
 **Instalar sem compilar:** no Pitiupi, **Configurações → Instalar JAR…** → `pitiupi.rpsls.jar` → reiniciar.

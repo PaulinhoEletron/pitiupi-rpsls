@@ -13,7 +13,7 @@ Plugin de **jogo 1×1 em rede local** para o [Pitiupi](https://github.com/Gabrie
 
 ## Começo rápido (testar localmente)
 
-Precisa de Git, JDK 17+ e `make` (e Docker para o `make up`):
+Precisa de Git, JDK 17+ e `make`:
 
 ```sh
 git clone https://github.com/GabrielFSSantos/pitiupi.git          # Pitiupi
@@ -22,7 +22,6 @@ cp -r pitiupi-rpsls/plugins/rpsls pitiupi/plugins/
 cd pitiupi/plugins/rpsls
 
 make run    # compila o Pitiupi + o plugin e abre o Pitiupi com o jogo instalado
-make up     # ou: dois jogadores em Docker (veja "Desenvolvimento" abaixo)
 ```
 
 ## Instalar
@@ -86,13 +85,9 @@ make test     # 20 testes: regras, commit-reveal, partidas simuladas, prazos
 make run      # copia o jar para ../../.pitiupi/plugins e abre o Pitiupi
 ```
 
-**Dois jogadores numa máquina só (containers).** `make up` sobe "alice" (172.28.0.11) e "bob" (172.28.0.12) numa rede bridge do Docker:
-- Alice: http://localhost:6080/vnc.html, Bob: http://localhost:6081/vnc.html → login na porta 5000 e jogue como acima.
-- `make logs` mostra cada mensagem do protocolo enviada (`->`) e recebida (`<-`). Parar com `make down`.
-
-Para capturar o tráfego para análise (por exemplo, no Wireshark):
+O console do Pitiupi mostra cada mensagem do protocolo enviada (`->`) e recebida (`<-`). Para capturar o tráfego para análise (por exemplo, no Wireshark), rode na máquina de um dos jogadores:
 ```sh
-docker compose -f docker/compose.yml exec alice tcpdump -i eth0 -w /tmp/rpsls.pcap tcp port 5000
+sudo tcpdump -i any -w rpsls.pcap tcp port 5000
 ```
 
 ## Créditos

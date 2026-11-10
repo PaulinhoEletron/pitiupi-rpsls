@@ -12,7 +12,6 @@
 #   make run      -> install + starts Pitiupi
 #   make kit      -> dist/rpsls-plugin.zip (pitiupi.rpsls.jar + install guides EN/PT)
 #   make kit-full -> dist/pitiupi-com-rpsls.zip (plan B: prebuilt Pitiupi + plugin)
-#   make up / down / logs -> 2 players in containers (local test)
 #   make clean
 #
 # Note: "scripts/pitiupi.sh run" recreates .pitiupi/plugins from
@@ -36,7 +35,7 @@ JAVAC     = javac --release 17 -encoding UTF-8
 # copies images and other non-Java resources from src/ into a classes folder
 RESOURCES = (cd src && find . -type f ! -name "*.java" ! -path "./META-INF/*" | tar -cf - -T -) | tar -C
 
-.PHONY: all core install test kit kit-full kit-completo run up down logs clean
+.PHONY: all core install test kit kit-full kit-completo run clean
 
 all: $(DIST)
 
@@ -91,18 +90,6 @@ kit-full: $(DIST)
 	chmod +x "$(FULL_DIR)/jogar.sh"
 	cd dist && rm -f pitiupi-com-rpsls.zip && zip -qr pitiupi-com-rpsls.zip pitiupi-com-rpsls
 	@echo "Full kit ready: dist/pitiupi-com-rpsls.zip"
-
-up: $(DIST)
-	docker compose -f docker/compose.yml up --build -d
-	@echo ""
-	@echo "  Alice -> http://localhost:6080/vnc.html"
-	@echo "  Bob   -> http://localhost:6081/vnc.html"
-
-down:
-	docker compose -f docker/compose.yml down
-
-logs:
-	docker compose -f docker/compose.yml logs -f
 
 clean:
 	rm -rf build dist "$(CORE_OUT)"

@@ -68,8 +68,18 @@ h. "Jogar de novo?" -> Yep nos dois = nova rodada; Nope encerra.
 
 4) COMPILAR PELO CÓDIGO (opcional, igual aos outros plugins)
 ------------------------------------------------------------
-Coloque a pasta  rpsls  em  <repositório>/plugins/rpsls , acrescente esta
-entrada no <repositório>/plugins.registry.json :
+Do zero (Git, JDK 17+ e make):
+
+    git clone https://github.com/GabrielFSSantos/pitiupi.git
+    git clone https://github.com/PaulinhoEletron/pitiupi-rpsls.git
+    cp -r pitiupi-rpsls/plugins/rpsls pitiupi/plugins/
+    cd pitiupi/plugins/rpsls
+    make run      (abre o Pitiupi com o jogo instalado)
+    make up       (ou: dois jogadores em Docker -> http://localhost:6080/vnc.html e :6081)
+
+Para usar o script oficial em vez do make: com a pasta  rpsls  em
+<repositório>/plugins/rpsls , acrescente esta entrada no
+<repositório>/plugins.registry.json :
 
     { "id": "rpsls", "dir": "plugins/rpsls", "build": "ant",
       "jar": "dist/pitiupi.rpsls.jar", "menuCategory": "Jogos" }

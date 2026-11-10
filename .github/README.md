@@ -42,6 +42,22 @@ plugins/rpsls/
 └── kit/           end‑user install guides
 ```
 
+## Try it locally
+
+Requires Git, JDK 17+ and `make` (Docker too for the two‑player demo). Linux, macOS or WSL:
+
+```sh
+git clone https://github.com/GabrielFSSantos/pitiupi.git          # Pitiupi
+git clone https://github.com/PaulinhoEletron/pitiupi-rpsls.git    # this plugin
+cp -r pitiupi-rpsls/plugins/rpsls pitiupi/plugins/
+cd pitiupi/plugins/rpsls
+
+make run    # builds Pitiupi + the plugin and opens Pitiupi with the game installed
+make up     # or: two players (alice, bob) in Docker containers on a virtual LAN
+```
+
+With `make up`, open Alice at http://localhost:6080/vnc.html and Bob at http://localhost:6081/vnc.html, log in to both on port 5000, then in Bob click **alice** in **Usuários nesta rede** → **Pedra, Papel, Tesoura, Lagarto, Spock** → **Desafiar para…**. `make logs` shows the protocol messages; `make down` stops everything.
+
 ## Install and run
 
 **Without compiling:** in Pitiupi, open **Configurações → Instalar JAR…**, choose `pitiupi.rpsls.jar` and restart.
@@ -99,6 +115,17 @@ Plugin de jogo **1 contra 1, ponto a ponto**, para o **[Pitiupi](https://github.
 - 20 testes automatizados.
 
 Documentação em português: [README.pt-BR.md](../plugins/rpsls/README.pt-BR.md) e [PROTOCOLO.md](../plugins/rpsls/PROTOCOLO.md).
+
+**Testar localmente** (Git, JDK 17+ e `make`; Docker para a demo com dois jogadores):
+
+```sh
+git clone https://github.com/GabrielFSSantos/pitiupi.git
+git clone https://github.com/PaulinhoEletron/pitiupi-rpsls.git
+cp -r pitiupi-rpsls/plugins/rpsls pitiupi/plugins/
+cd pitiupi/plugins/rpsls
+make run    # abre o Pitiupi com o jogo instalado
+make up     # ou: dois jogadores em containers -> http://localhost:6080/vnc.html e :6081
+```
 
 **Instalar sem compilar:** no Pitiupi, **Configurações → Instalar JAR…** → `pitiupi.rpsls.jar` → reiniciar.
 

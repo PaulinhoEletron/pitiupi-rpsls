@@ -71,8 +71,18 @@ h. "Jogar de novo?" ("Play again?") -> Yep on both sides = new round;
 
 4) BUILD FROM SOURCE (optional, like the other plugins)
 -------------------------------------------------------
-Put the  rpsls  folder in  <repository>/plugins/rpsls , add this entry
-to <repository>/plugins.registry.json :
+From scratch (Git, JDK 17+ and make):
+
+    git clone https://github.com/GabrielFSSantos/pitiupi.git
+    git clone https://github.com/PaulinhoEletron/pitiupi-rpsls.git
+    cp -r pitiupi-rpsls/plugins/rpsls pitiupi/plugins/
+    cd pitiupi/plugins/rpsls
+    make run      (opens Pitiupi with the game installed)
+    make up       (or: two players in Docker -> http://localhost:6080/vnc.html and :6081)
+
+To use the official script instead of make: with the  rpsls  folder in
+<repository>/plugins/rpsls , add this entry to
+<repository>/plugins.registry.json :
 
     { "id": "rpsls", "dir": "plugins/rpsls", "build": "ant",
       "jar": "dist/pitiupi.rpsls.jar", "menuCategory": "Jogos" }

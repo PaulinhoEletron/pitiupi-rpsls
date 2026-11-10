@@ -12,6 +12,20 @@ A **1‑vs‑1 local‑network game** plugin for [Pitiupi](https://github.com/Ga
 - The current Pitiupi (the version with `plugins.registry.json` and `scripts/pitiupi.sh`).
 - JDK 17+ and Apache Ant, the same as Pitiupi itself.
 
+## Quick start (try it locally)
+
+Requires Git, JDK 17+ and `make` (Docker too for `make up`):
+
+```sh
+git clone https://github.com/GabrielFSSantos/pitiupi.git          # Pitiupi
+git clone https://github.com/PaulinhoEletron/pitiupi-rpsls.git    # this plugin
+cp -r pitiupi-rpsls/plugins/rpsls pitiupi/plugins/
+cd pitiupi/plugins/rpsls
+
+make run    # builds Pitiupi + the plugin and opens Pitiupi with the game installed
+make up     # or: two players in Docker (see "Development" below)
+```
+
 ## Install
 
 ### Option 1 — just the `.jar` (no compiling)

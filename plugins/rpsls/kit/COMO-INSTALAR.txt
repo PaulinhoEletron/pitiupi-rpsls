@@ -1,0 +1,77 @@
+RPSLS - Pedra, Papel, Tesoura, Lagarto, Spock
+Plugin para o Pitiupi (Prof. Flávio, UFSJ)  ·  Autor: Paulo Felipe
+(English version: HOW-TO-INSTALL.txt)
+=====================================================================
+
+O jogo é o arquivo  pitiupi.rpsls.jar . Ele roda dentro do Pitiupi:
+cada jogador instala no SEU Pitiupi. Precisa do Pitiupi atual (o que
+tem scripts/pitiupi.sh) e do Java 17 ou mais novo.
+
+
+1) INSTALAR (cada jogador, sem compilar)
+----------------------------------------
+a. Abra o Pitiupi como de costume, na pasta do repositório:
+     Linux / WSL:   ./scripts/pitiupi.sh run --all
+     Windows:       scripts\pitiupi.cmd run --all
+
+b. No Pitiupi, abra a aba  Configurações
+       -> Instalar JAR…  -> escolha o  pitiupi.rpsls.jar
+
+c. Reinicie o Pitiupi quando ele pedir (ou feche e rode o comando de novo).
+
+d. A aba  "Pedra, Papel, Tesoura, Lagarto, Spock"  aparece na galeria
+   Plugins . No console aparece:
+       Discovered plugin package: ...rpsls...
+       [RPSLS] plugin loaded ...
+
+O Pitiupi registra o jar no plugins.registry.json, então ele continua
+instalado nas próximas vezes que você rodar o script.
+
+
+2) JOGAR (os dois na mesma rede)
+--------------------------------
+a. Os dois usam a MESMA porta no login (na sala, em geral 5000) e
+   nomes diferentes.
+b. Windows: se aparecer o aviso do firewall, marque "Redes privadas" E
+   "Redes públicas" e clique em Permitir.
+c. Em alguns segundos o outro jogador aparece na lista
+   "Usuários nesta rede" (à direita).
+d. Um jogador clica no nome do outro ->
+       Pedra, Papel, Tesoura, Lagarto, Spock
+       -> Desafiar para Pedra, Papel, Tesoura, Lagarto, Spock
+e. A aba do jogo abre sozinha para o outro jogador:
+   "fulano te desafiou! E aí, bora jogar...?" -> Bora!
+f. Contagem 3, 2, 1, Vai! -> cada um clica na sua jogada (10 s).
+g. Aparecem as duas jogadas, a regra ("Spock vaporiza Pedra") e quem venceu.
+h. "Jogar de novo?" -> Yep nos dois = nova rodada; Nope encerra.
+   "Voltar" retorna ao lobby.
+
+
+3) SE ALGO NÃO FUNCIONAR
+------------------------
+* O jogo não aparece na galeria Plugins:
+    instale de novo (passo 1b) e reinicie o Pitiupi.
+
+* O outro jogador não aparece na lista (a Wi‑Fi bloqueia multicast).
+  Desafie pelo IP:
+    - abra a aba do jogo pela galeria Plugins;
+    - o lobby mostra "Seu IP": fale esse número para o outro jogador;
+    - o outro digita em "Ou desafie pelo IP" -> Desafiar.
+
+* "Não foi possível conectar":
+    firewall bloqueando, porta diferente, ou a Wi‑Fi isola os aparelhos.
+    -> liguem o hotspot de um celular; desliguem VPN, Docker e máquinas virtuais.
+
+* "Convite expirou ... Ele tem o plugin RPSLS instalado?":
+    o outro jogador não instalou o plugin (ou não reiniciou o Pitiupi).
+
+
+4) COMPILAR PELO CÓDIGO (opcional, igual aos outros plugins)
+------------------------------------------------------------
+Coloque a pasta  rpsls  em  <repositório>/plugins/rpsls , acrescente esta
+entrada no <repositório>/plugins.registry.json :
+
+    { "id": "rpsls", "dir": "plugins/rpsls", "build": "ant",
+      "jar": "dist/pitiupi.rpsls.jar", "menuCategory": "Jogos" }
+
+e rode:   ./scripts/pitiupi.sh run --all
